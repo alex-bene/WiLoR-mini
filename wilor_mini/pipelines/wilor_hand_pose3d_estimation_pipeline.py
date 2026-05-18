@@ -86,7 +86,11 @@ class WiLorHandPose3dEstimationPipeline:
             hand_bbox = det.boxes.data.cpu().detach().squeeze().numpy()
             is_rights.append(det.boxes.cls.cpu().detach().squeeze().item())
             bboxes.append(hand_bbox[:4].tolist())
-            detect_rets.append({"hand_bbox": bboxes[-1], "is_right": is_rights[-1]})
+            detect_rets.append({
+                "hand_bbox": bboxes[-1],
+                "is_right": is_rights[-1],
+                "hand_conf": det.boxes.conf.cpu().detach().squeeze().item(),
+            })
 
         if len(bboxes) == 0:
             self.logger.warn("No hand detected!")
