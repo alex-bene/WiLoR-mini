@@ -4,8 +4,9 @@ smplx==0.1.28
 timm
 einops
 ultralytics>=8.3.4
+dill # needed to load the detector with ultralytics
 opencv-python
 huggingface_hub
 scikit-image
 roma
-chumpy @ git+https://github.com/mattloper/chumpy
+chumpy @ git+https://github.com/mattloper/chumpy@357a9544d88e88dac729ba3351a1d9395a38b220
